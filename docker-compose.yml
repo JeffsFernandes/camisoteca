@@ -1,0 +1,30 @@
+web:
+  build: .
+  dockerfile: ./docker/Dockerfile
+  hostname: camisoteca
+  ports:
+    - 3000:3000
+  links:
+    - db
+  volumes:
+    - .:/app
+    - bundle:/bundle
+    - node_modules:/node_modules
+  working_dir: /app
+  environment:
+    BUNDLE_APP_CONFIG: /app/.bundle
+
+db:
+  image: postgres:9.5.4
+  hostname: postgres
+  volumes:
+    - .volumes/data:/var/lib/postgresql/data
+    - .volumes/sock:/var/run/postgresql
+  ports:
+    - 5432:5432
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: ""
+    LANG: en_US.UTF-8
+    LANGUAGE: en_US.UTF-8
+    LC_ALL: en_US.UTF-8
