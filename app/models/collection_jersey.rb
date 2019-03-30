@@ -1,0 +1,2 @@
+class CollectionJersey < ApplicationRecord
+end
