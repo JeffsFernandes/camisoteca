@@ -1,5 +1,3 @@
 class CollectionPhotosController < ActionController::Base
-	def new
-		
-	end
+  def new; end
 end
